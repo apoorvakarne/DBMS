@@ -33,8 +33,6 @@ BEGIN
     END LOOP; 
 END Proc_grade;   
 
-Procedure created.
-
 
 BEGIN 
     Proc_grade; 
