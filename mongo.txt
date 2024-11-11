@@ -300,14 +300,20 @@ db.Employee.aggregate([
 2. Using Aggregate method returns names and _id in upper case and
 in alphabetical order.
 db.Employee.aggregate([
-   {
-     $project: {
-       _id: 0,
-       name: { $concat: ["$Name.FName", " ", "$Name.LName"] }
-     }
-   },
-   { $sort: { name: 1 } }
- ]);
+  {
+    $project: {
+      _id: 0,
+      name: {
+        $concat: [
+          { $toUpper: "$Name.FName" },
+          " ",
+          { $toUpper: "$Name.LName" }
+        ]
+      }
+    }
+  },
+  { $sort: { name: 1 } }
+]);
 3. Using aggregation method find Employee with Total Salary for
 Each City with Designation="DBA".
 db.Employee.aggregate([ { $match: { Designation: "Programmer" } }, { $group: { _id: { $or: ["$Address.PAddr.city", "$Address.LAddr.city"] }, totalSalary: { $sum: "$Salary" } } }])
