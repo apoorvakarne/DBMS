@@ -32,11 +32,12 @@ BEGIN
         END IF; 
     END LOOP; 
 END Proc_grade;   
-
+/
 
 BEGIN 
     Proc_grade; 
-END; 
+END;
+/
 
 Statement processed.
 Roll no: 1 Name: Disha Gore Total Mks: 1350
